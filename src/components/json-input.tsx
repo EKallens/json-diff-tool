@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button"
-import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Sparkles } from "lucide-react"
+import JsonEditor from "@/components/json-editor.tsx";
 
 interface JsonInputProps {
     label: string
@@ -29,12 +29,7 @@ export function JsonInput({ label, badge, value, onChange, onBeautify, placehold
                 </div>
             </CardHeader>
             <CardContent>
-                <Textarea
-                    placeholder={placeholder}
-                    value={value}
-                    onChange={(e) => onChange(e.target.value)}
-                    className="min-h-[300px] font-mono text-sm"
-                />
+                <JsonEditor value={value} onChange={onChange} placeholder={placeholder} />
             </CardContent>
         </Card>
     )

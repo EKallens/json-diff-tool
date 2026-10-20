@@ -1,0 +1,134 @@
+.jve {
+    --jve-gutter: 54px;
+    height: 360px;
+    resize: none;
+    font-variant-ligatures: none;
+    letter-spacing: normal;
+}
+
+.jve-area {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+}
+
+.jve-note {
+    color: var(--jv-muted);
+    font-size: 11px;
+    padding-right: 4px;
+}
+
+/* ---------- margen: números de línea + flechas de plegado ---------- */
+.jve-gutter {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: var(--jve-gutter);
+    z-index: 2;
+    overflow: hidden;
+    background: var(--jv-bg);
+    border-right: 1px solid var(--jv-border);
+    user-select: none;
+}
+.jve-gutter-inner {
+    padding-top: 12px;
+    will-change: transform;
+}
+.jve-gl {
+    display: flex;
+    align-items: center;
+    height: 21px;
+    padding-right: 4px;
+}
+.jve-gn {
+    flex: 1;
+    text-align: right;
+    padding-right: 6px;
+    color: var(--jv-muted);
+    font-size: 11px;
+}
+
+/* ---------- capas: colores (debajo) y textarea (encima) ---------- */
+/* Deben tener métricas idénticas */
+.jve-hl,
+.jve-ta {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 21px;
+    letter-spacing: normal;
+    white-space: pre;
+    tab-size: 2;
+}
+
+.jve-hl {
+    overflow: hidden;
+    pointer-events: none;
+}
+.jve-hl-inner {
+    padding: 12px 12px 12px calc(var(--jve-gutter) + 10px);
+    min-width: max-content;
+}
+.jve-line {
+    height: 21px;
+}
+
+.jve-ta {
+    width: 100%;
+    height: 100%;
+    padding: 12px 12px 12px calc(var(--jve-gutter) + 10px);
+    border: 0;
+    outline: 0;
+    resize: none;
+    overflow: auto;
+    background: transparent;
+    color: transparent;
+    caret-color: var(--jv-fg);
+}
+.jve-ta::placeholder {
+    color: var(--jv-muted);
+}
+.jve-ta::selection {
+    background: color-mix(in srgb, var(--jv-c0) 30%, transparent);
+    color: transparent;
+}
+
+/* Guías de indentación sobre los espacios reales de cada línea */
+.jve-guide {
+    box-shadow: inset 1px 0 0 color-mix(in srgb, var(--c) 35%, transparent);
+}
+
+/* Nada de padding/negrita/cursor que desalinee el texto con el textarea */
+.jve .jv-bracket {
+    padding: 0;
+    font-weight: 400;
+    cursor: text;
+    border-radius: 2px;
+}
+.jve .jv-boolean {
+    font-weight: 400;
+}
+.jve .jv-null {
+    font-style: normal;
+}
+
+/* Marcador de bloque plegado */
+.jve-ph {
+    color: var(--jv-muted);
+    background: color-mix(in srgb, var(--jv-muted) 20%, transparent);
+    border-radius: 3px;
+}
+
+/* Bracket sin pareja / tipo equivocado / texto inválido */
+.jve-err {
+    color: #cf222e !important;
+    text-decoration: underline wavy #cf222e;
+    text-underline-offset: 3px;
+}
+.dark .jve-err {
+    color: #ff7b72 !important;
+    text-decoration-color: #ff7b72;
+}

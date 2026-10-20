@@ -25,8 +25,8 @@ export function ResultsPanel({ differences, hasInput, error, isComparing }: Resu
                 </CardHeader>
                 <CardContent>
                     <div className="space-y-3">
-                        {differences.map((diff, index) => (
-                            <DiffResultItem key={index} diff={diff} />
+                        {differences.map((diff) => (
+                            <DiffResultItem diff={diff} leftLabel="Original" rightLabel="Comparison" />
                         ))}
                     </div>
                 </CardContent>
